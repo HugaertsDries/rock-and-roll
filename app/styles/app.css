@@ -1,6 +1,8 @@
 :root {
+  --light-blue: #00bfff;
   --bright-yellow: #ffda00;
   --navitem-link-color: var(--bright-yellow);
+  --navitem-hover-color: var(--light-blue);
 }
 .rr-navbar {
   position: relative;
@@ -17,12 +19,14 @@
   padding: 5px;
 }
 .rr-navbar-item > a:hover {
-  border-bottom: 2px solid var(--navitem-link-color);
+  border-bottom: 2px solid var(--navitem-hover-color);
 }
+
 .rr-navbar-item > a.active {
   color: inherit;
   border-bottom: 2px solid var(--navitem-link-color);
 }
+
 .rr-navbar-item + .rr-navbar-item {
   margin-left: 10px;
 }
