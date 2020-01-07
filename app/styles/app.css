@@ -4,13 +4,20 @@
   --light-blue: #96ccff;
   --mid-grey: #555;
   --near-white: #f4f4f4;
-  --navitem-link-color: var(--bright-yellow);
-  --navitem-hover-color: var(--light-blue);
   --input-color: var(--mid-grey);
   --button-color: var(--near-white);
   --button-bg-color: var(--blue);
   --button-hover-color: var(--dark-blue);
   --button-disabled-color: var(--light-blue);
+}
+
+.rating-star {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  background-color: inherit;
 }
 
 .rr-sidebar {
