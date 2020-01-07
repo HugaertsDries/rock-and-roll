@@ -10,8 +10,7 @@ let Song = EmberObject.extend({
 
 const Band = EmberObject.extend({
     name: '',
-    slug: '',
-    songs: []
+    slug: ''
 });
 
 export default Route.extend({
@@ -47,19 +46,19 @@ export default Route.extend({
         // -----
         let ledZeppelin = Band.create({
             name: 'Led Zeppelin',
-            name: 'led-zeppelin',
+            slug: 'led-zeppelin',
             songs: A([blackDog])
         });
 
         let pearlJam = Band.create({
             name: 'Pearl Jam',
-            name: 'pearl-jam',
+            slug: 'pearl-jam',
             songs: A([yellowLedbetter, daughter])
         });
 
         let fooFighters = Band.create({
             name: 'Foo Fighters',
-            name: 'foo-fighters',
+            slug: 'foo-fighters',
             songs: A([pretender])
         });
 
