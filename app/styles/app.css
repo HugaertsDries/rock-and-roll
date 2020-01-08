@@ -4,6 +4,9 @@
   --light-blue: #96ccff;
   --mid-grey: #555;
   --near-white: #f4f4f4;
+  --bright-yellow: #ffda00;
+  --navitem-hover-color: var(--light-blue);
+  --navitem-link-color: var(--bright-yellow);
   --input-color: var(--mid-grey);
   --button-color: var(--near-white);
   --button-bg-color: var(--blue);

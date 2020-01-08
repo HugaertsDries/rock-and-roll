@@ -14,6 +14,7 @@ Router.map(function () {
     this.route('band', { path: ':slug' }, function () {
       // bands.band.songs
       this.route('songs');
+      this.route('details');
     });
   });
 
