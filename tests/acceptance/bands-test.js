@@ -15,10 +15,9 @@ module('Acceptance | Bands', function (hooks) {
     // visiting "/"
     await visit('/');
 
-    let bandLinks = document.querySelectorAll('.rr-band-link');
-    assert.equal(bandLinks.length, 2, 'All band links are rendered');
-    assert.ok(bandLinks[0].textContent.includes('Radiohead'), 'First band link contains the band name');
-    assert.ok(bandLinks[1].textContent.includes('Long Distance Calling'), 'The other band link contains the band name');
+    assert.dom('[data-test-rr=band-link]').exists({count: 2}, 'All band links are rendered');
+    assert.dom('[data-test-rr=band-list-item]:first-child').hasText("Radiohead", 'The first band link contains the band name');
+    assert.dom('[data-test-rr=band-list-item]:last-child').hasText("Long Distance Calling", 'The other band link contains the band name');
   });
 
   test('visiting "/" we should be able to create a new band', async function (assert) {
@@ -26,16 +25,14 @@ module('Acceptance | Bands', function (hooks) {
 
     await visit('/');
     // clicking an element
-    await click('label');
+    await click('[data-test-rr=new-band-label]');
     // filling an the input field
-    await fillIn('.rr-input', 'Caspian');
-    await click('.rr-action-button');
+    await fillIn('[data-test-rr=new-band-input]', 'Caspian');
+    await click('[data-test-rr=new-band-button]');
 
-    let bandLinks = document.querySelectorAll('.rr-band-link');
-    assert.equal(bandLinks.length, 2, 'All band links are rendered');
-    assert.ok(bandLinks[1].textContent.includes('Caspian'), 'New band link rendered');
-    assert.ok(document
-      .querySelector('.rr-navbar-item > .active')
-      .textContent.includes('Songs'), 'The Songs tab for the new Band is active');
+    assert.dom('[data-test-rr=band-list-item]').exists({count: 2}, 'A new band link is rendered');
+    assert.dom('[data-test-rr=band-list-item]:last-child').hasText('Caspian', 'The new band link is rendered as the last item');
+    assert.dom('[data-test-rr=songs-nav-item] > .active').exists('The Songs tab is active');
   });
-});
+})
+;
