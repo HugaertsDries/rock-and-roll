@@ -1,5 +1,6 @@
 import {module, test} from 'qunit';
-import {visit, click, fillIn} from '@ember/test-helpers';
+import {visit} from '@ember/test-helpers';
+import {createBand} from 'rock-and-roll/tests/helpers/custom-helpers';
 import {setupApplicationTest} from 'ember-qunit';
 import {setupMirage} from 'ember-cli-mirage/test-support';
 
@@ -9,6 +10,7 @@ module('Acceptance | Bands', function (hooks) {
 
   test('visiting "/" should load a list of bands', async function (assert) {
     // creating and setting mock data using Mirage
+    this.server.logging = true;
     this.server.create('band', {name: 'Radiohead'});
     this.server.create('band', {name: 'Long Distance Calling'});
 
@@ -21,14 +23,12 @@ module('Acceptance | Bands', function (hooks) {
   });
 
   test('visiting "/" we should be able to create a new band', async function (assert) {
+    this.server.logging = true;
     this.server.create('band', {name: 'Royal Blood'});
 
+    // DONT FORGET AWAIT!!!!
     await visit('/');
-    // clicking an element
-    await click('[data-test-rr=new-band-label]');
-    // filling an the input field
-    await fillIn('[data-test-rr=new-band-input]', 'Caspian');
-    await click('[data-test-rr=new-band-button]');
+    await createBand("Caspian");
 
     assert.dom('[data-test-rr=band-list-item]').exists({count: 2}, 'A new band link is rendered');
     assert.dom('[data-test-rr=band-list-item]:last-child').hasText('Caspian', 'The new band link is rendered as the last item');
