@@ -1,11 +1,13 @@
 import Component from '@ember/component';
-import {computed} from '@ember/object';
+import {computed, action} from '@ember/object';
 
 export default Component.extend({
   // tagName: 'div', outer html tag of the component DEFAULT is div.
   classNames: ['rating-panel'], // css classes on the outer tag of the component.
   rating: 0, // component arg
   maxRating: 5, // component arg
+  item: null,
+  onClick() {}, // call-back function
 
   /**
    * rating and maxRating are DEPENDED keys.
@@ -17,5 +19,9 @@ export default Component.extend({
       stars.push({rating: i, isFull: this.rating >= i});
     }
     return stars;
+  }),
+
+  setRating: action(function(newRating) {
+    return this.onClick(newRating);
   })
 });

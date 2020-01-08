@@ -1,5 +1,5 @@
 {{#each this.stars as |star|}}
-    <button class="rating-star">
+    <button class="rating-star" {{on "click" (fn this.setRating star.rating)}}>
       {{#if star.isFull}}
         {{fa-icon "star"}}
       {{else}}

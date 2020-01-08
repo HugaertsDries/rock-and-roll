@@ -23,5 +23,9 @@ export default Controller.extend({
     this.model.songs.pushObject(newSong);
     this.set('newSongTitle', '');
     // this.toggleAddSong();
+  }),
+
+  updateRating: action(function (song, newRating) {
+    song.set('rating', song.rating === newRating ? 0 : newRating);
   })
 });
