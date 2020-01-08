@@ -1,11 +1,14 @@
 import Controller from '@ember/controller';
 import {action} from '@ember/object';
 import {empty} from '@ember/object/computed';
+import {inject as service} from '@ember/service';
 
 export default Controller.extend({
   isAddingBand: false,
   newBandName: '',
   isAddButtonDisabled: empty('newBandName'),
+
+  router: service(),
 
 
   toggleAddBand: action(function () {
@@ -26,6 +29,6 @@ export default Controller.extend({
       isAddingBand: false
     });
 
-    this.router.transitionTo('bands.band.song', newBand.id);
+    this.router.transitionTo('bands.band.songs', newBand.id);
   })
 });

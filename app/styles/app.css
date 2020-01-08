@@ -14,6 +14,12 @@
   --button-disabled-color: var(--light-blue);
 }
 
+#ember-testing-container {
+  font-family: 'avenir next', avenir, sans-serif;
+  color: var(--near-white);
+  background-color: var(--mid-grey) !important;
+}
+
 .rating-star {
   cursor: pointer;
   border: 0;
