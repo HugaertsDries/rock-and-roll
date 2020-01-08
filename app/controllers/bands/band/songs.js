@@ -2,8 +2,6 @@ import Controller from '@ember/controller';
 import {action} from '@ember/object';
 import {empty} from '@ember/object/computed';
 
-import Song from 'rock-and-roll/models/song';
-
 export default Controller.extend({
   isAddingSong: false,
   newSongTitle: '',
@@ -14,15 +12,17 @@ export default Controller.extend({
     this.set('isAddingSong', !this.isAddingSong);
   }),
 
-  saveSong: action(function (event) {
+  saveSong: action( async function (event) {
     event.preventDefault(); // IMPORTANT TO BLOCK UNWANTED BEHAVIOR
-    let newSong = Song.create({
-      title: this.newSongTitle,
+
+    let newSong = this.store.createRecord('song', {
+      title: this.get('newSongTitle'),
+      band: this.model
     });
 
-    this.model.songs.pushObject(newSong);
+    await newSong.save();
     this.set('newSongTitle', '');
-    // this.toggleAddSong();
+
   }),
 
   updateRating: action(function (song, newRating) {
