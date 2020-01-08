@@ -25,7 +25,8 @@ export default Controller.extend({
 
   }),
 
-  updateRating: action(function (song, newRating) {
+  updateRating: action(async function (song, newRating) {
     song.set('rating', song.rating === newRating ? 0 : newRating);
+    await song.save();
   })
 });
