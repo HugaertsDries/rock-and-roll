@@ -7,9 +7,4 @@ export default Route.extend({
         newSongTitle: '',
       })
     },
-
-    model() {
-        let band = this.modelFor('bands.band');
-        return band;
-    }
 });

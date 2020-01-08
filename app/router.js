@@ -21,7 +21,7 @@ const Router = EmberRouter.extend({
         },
         'bands.band.songs': () => {
           let bandRouteInfo = transition.to.find(info => info.name.includes('bands.band'));
-          let bandSlug = bandRouteInfo.params.slug;
+          let bandSlug = bandRouteInfo.params.id;
           let bandName = bandSlug.split('-').map(s => s.capitalize()).join(' ');
           return `${bandName} songs`;
         }
@@ -42,7 +42,7 @@ Router.map(function () {
   this.route('bands', function () {
     // bands.band
     // dynamic route, has a slug
-    this.route('band', {path: ':slug'}, function () {
+    this.route('band', {path: ':id'}, function () {
       // bands.band.songs
       this.route('songs');
       this.route('details');

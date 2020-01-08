@@ -1,7 +1,7 @@
-import Model, {attr, belongTo} from '@ember-data/model';
+import Model, {attr, belongsTo} from '@ember-data/model';
 
 export default Model.extend({
     title: attr(),
     rating: attr('number'),
-    band: belongTo() // inferred to be band,
+    band: belongsTo() // inferred to be band,
 });
